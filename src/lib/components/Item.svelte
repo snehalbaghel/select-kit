@@ -1,0 +1,89 @@
+<script lang="ts">
+	import type { HTMLAttributes } from 'svelte/elements';
+	import { onMount, tick } from 'svelte';
+	import { ITEM_ATTR, ITEM_VALUE_ATTR } from '$lib/constants.js';
+	// @ts-ignore Import from internal package
+	import { get_current_component } from 'svelte/internal';
+	import { forwardEventsBuilder } from '@smui/common/internal';
+	import { getStore } from '$lib/store.js';
+
+	interface $$Props extends Partial<HTMLAttributes<HTMLDivElement>> {
+		id: string;
+		onSelectItem: (id: string) => void;
+		value?: string | undefined;
+	}
+
+	export let id: string;
+	export let value: string = '';
+	export let onSelectItem: $$Props['onSelectItem'];
+	const forwardEvents = forwardEventsBuilder(get_current_component());
+
+	const { query, scores, active, shouldFilter, open } = getStore();
+
+	let itemRef: HTMLDivElement | undefined;
+	$: if (!id) {
+		throw Error('Each item requires a unique id');
+	}
+
+	/**
+	 * Value is optional, if it's not passed by the user try to use inner text
+	 */
+	onMount(() => {
+		if (!value) {
+			value = itemRef?.innerText ?? '';
+		}
+	});
+
+	$: matchesQuery = !$query || !$shouldFilter ? true : $scores[id];
+	/**
+	 * The reason we hide the div instead of removing it from dom is because thats how
+	 * we keep track of all the items their values
+	 *
+	 * Note for some reason directly setting the hidden attribute in the markup does
+	 * not remove it if the value resolves to false. Is it a svelte issue?
+	 */
+	$: hiddenAttrs = !matchesQuery ? { hidden: !matchesQuery, 'aria-hidden': !matchesQuery } : {};
+	/**
+	 * Attributes to identify items and their values, we use this in ListBox
+	 */
+	$: navAIItemAttrs = {
+		[ITEM_ATTR]: true,
+		[ITEM_VALUE_ATTR]: value,
+		...hiddenAttrs
+	};
+	$: isSelected = $active === id;
+</script>
+
+<div
+	{...$$restProps}
+	{...navAIItemAttrs}
+	bind:this={itemRef}
+	{id}
+	role="option"
+	aria-selected={isSelected}
+	on:pointermove={(event) => {
+		if (!isSelected) {
+			active.set(id);
+		}
+
+		if ($$restProps.onpointermove) {
+			$$restProps.onpointermove(event);
+		}
+	}}
+	tabindex={-1}
+	on:click={async () => {
+		query.set(value);
+		onSelectItem(id);
+		await tick();
+		open.set(false);
+	}}
+	use:forwardEvents
+>
+	<slot />
+</div>
+
+<style>
+	[hidden] {
+		display: none !important;
+	}
+</style>

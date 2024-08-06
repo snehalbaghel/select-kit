@@ -6,6 +6,7 @@
 	import { tabSelectItems } from './items.js';
 
 	let selectedTabIndex = 0;
+	let value: string
 
 	function tabListener(event: CustomEvent) {
 		// TODO: Fix this type casting
@@ -16,6 +17,7 @@
 			const change = keyboardEvent.shiftKey ? -1 : 1;
 			const nextIndex = (selectedTabIndex + change + tabSelectItems.length) % tabSelectItems.length;
 			selectedTabIndex = nextIndex;
+			value = ''
 		}
 	}
 </script>
@@ -32,14 +34,14 @@
 		</span>
 
 		<Select.Input
+			value={value}
 			placeholder="Search..."
 			class="input h-14 w-full py-4 pl-14 pr-5 text-lg font-medium text-black outline-none placeholder:text-gray-200"
 			on:keydown={tabListener}
 		/>
 	</div>
 
-	<!-- TODO: Does not work with shouldFilter = true, fix it -->
-	<Select.ListBox shouldFilter={false} class="p-2">
+	<Select.ListBox shouldFilter={true} class="p-2">
 		<div class="flex flex-wrap gap-1 mb-2">
 			{#each tabSelectItems as tab, index}
 				<!-- svelte-ignore a11y-click-events-have-key-events -->

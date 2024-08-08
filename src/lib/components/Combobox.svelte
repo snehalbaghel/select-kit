@@ -15,7 +15,7 @@
 
 	const forwardEvents = forwardEventsBuilder(get_current_component());
 	const { active, listBoxRef, label, open, query, selected } = getStore();
-	$: console.log($query, $active);
+
 </script>
 
 <!-- TODO: Add home, end, pageup, pagedown listeners -->
@@ -69,7 +69,7 @@
 				break;
 			default:
 				// // This block keeps track of search query entered in quick succession
-				if (e.key.length === 1) {
+				if (e.key.length === 1 && !e.altKey && !e.metaKey && !e.ctrlKey) {
 					if (typeof timeout === 'number') {
 						clearTimeout(timeout);
 					}

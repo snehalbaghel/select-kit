@@ -45,8 +45,6 @@
 		openStore.set(open);
 	}
 
-	$: console.log('store', $query, $active, $openStore);
-
 	/**
 	 * Reset active when query is changed
 	 */

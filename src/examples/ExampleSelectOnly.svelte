@@ -6,12 +6,16 @@
 </script>
 
 <Select.Root label="select-only-example">
-	<Select.Combobox placeholder="Select a number..." class="input" />
-	<Select.ListBox>
-		<Select.NoResults>No results found</Select.NoResults>
-		<Select.Item onSelectItem={() => console.log('clicked one')} id="one">One</Select.Item>
-		<Select.Item onSelectItem={() => console.log('clicked two')} id="two">Two</Select.Item>
-		<Select.Item onSelectItem={() => console.log('clicked three')} id="three">Three</Select.Item>
-		<Select.Item onSelectItem={() => console.log('clicked four')} id="four">Four</Select.Item>
+	<Select.Combobox class="input" let:selected>
+		{selected || 'Select a number...'}
+	</Select.Combobox>
+	<Select.ListBox selectOnly let:open>
+		{#if open}
+			<Select.NoResults>No results found</Select.NoResults>
+			<Select.Item onSelectItem={() => console.log('clicked one')} id="one">One</Select.Item>
+			<Select.Item onSelectItem={() => console.log('clicked two')} id="two">Two</Select.Item>
+			<Select.Item onSelectItem={() => console.log('clicked three')} id="three">Three</Select.Item>
+			<Select.Item onSelectItem={() => console.log('clicked four')} id="four">Four</Select.Item>
+		{/if}
 	</Select.ListBox>
 </Select.Root>

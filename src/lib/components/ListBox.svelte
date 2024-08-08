@@ -11,10 +11,12 @@
 		open?: boolean | undefined;
 		shouldFilter?: boolean;
 		label?: string;
+		selectOnly?: boolean;
 	}
 
 	export const label: string | undefined = undefined;
 	export let shouldFilter = true;
+	export let selectOnly = false;
 	/** Passing this prop will make open a controlled prop! */
 	export let open: boolean | undefined = undefined;
 	const {
@@ -25,33 +27,42 @@
 		matchCount,
 		shouldFilter: shouldFilterStore,
 		label: labelStore,
-		open: openStore
+		open: openStore,
+		selectOnly: selectOnlyStore
 	} = getStore();
 	const forwardEvents = forwardEventsBuilder(get_current_component());
 
-	/** Update the store value when the prop updates */
+	/**
+	 * Update the store value when the prop updates
+	 **/
 	$: shouldFilterStore.set(shouldFilter);
+	$: selectOnlyStore.set(selectOnly);
 
-	/** This line ensure that the passed open prop overrides if theres any state changes to open
-	 * Is there a better way to do this?
-	 */
+	/**
+	 * Prefer passed prop value over store
+	 **/
 	$: if (typeof open === 'boolean' && open !== $openStore) {
 		openStore.set(open);
 	}
+
+	$: console.log('store', $query, $active, $openStore);
 
 	/**
 	 * Reset active when query is changed
 	 */
 	$: $query, tick().then(() => active.set(undefined));
 
+	/**
+	 * Scores all the items and sets it to store
+	 */
 	$: {
-		if (shouldFilter && $query && $listBoxRef) {
+		if (!selectOnly && shouldFilter && $query && $listBoxRef) {
 			const allItems = $listBoxRef.querySelectorAll(`[${ITEM_ATTR}]`);
 			let newMatchCount = 0;
 			const newScores: Record<string, number> = {};
 
 			allItems.forEach((item) => {
-				// TODO: Use a scoring algorithm
+				// TODO: Use a scoring algorithm?
 				const id = item.getAttribute('id');
 				const value = item.getAttribute(ITEM_VALUE_ATTR);
 				if (!id) {

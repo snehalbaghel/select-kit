@@ -18,7 +18,7 @@
 	export let onSelectItem: $$Props['onSelectItem'];
 	const forwardEvents = forwardEventsBuilder(get_current_component());
 
-	const { query, scores, active, shouldFilter, open } = getStore();
+	const { query, scores, active, shouldFilter, open, selectOnly, selected } = getStore();
 
 	let itemRef: HTMLDivElement | undefined;
 	$: if (!id) {
@@ -34,10 +34,10 @@
 		}
 	});
 
-	$: matchesQuery = !$query || !$shouldFilter ? true : $scores[id];
+	$: matchesQuery = !$query || !$shouldFilter || selectOnly ? true : !!$scores[id];
 	/**
-	 * The reason we hide the div instead of removing it from dom is because thats how
-	 * we keep track of all the items their values
+	 * The reason we hide the div instead of removing it from dom is because its our
+	 * only data source
 	 *
 	 * Note for some reason directly setting the hidden attribute in the markup does
 	 * not remove it if the value resolves to false. Is it a svelte issue?
@@ -62,6 +62,7 @@
 	role="option"
 	aria-selected={isSelected}
 	on:pointermove={(event) => {
+		// TODO: is this spec?
 		if (!isSelected) {
 			active.set(id);
 		}
@@ -73,6 +74,7 @@
 	tabindex={-1}
 	on:click={async () => {
 		query.set(value);
+		selected.set(id);
 		onSelectItem(id);
 		await tick();
 		open.set(false);

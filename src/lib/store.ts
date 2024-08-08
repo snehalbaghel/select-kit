@@ -11,6 +11,7 @@ export interface Store {
 	shouldFilter: Writable<boolean>;
 	open: Writable<boolean>;
 	label: Writable<string>;
+	selectOnly: Writable<boolean>;
 }
 
 /**
@@ -27,6 +28,7 @@ export const initializeStore = () => {
 	const shouldFilter: Store['shouldFilter'] = writable(true);
 	const open: Store['open'] = writable(false);
 	const label: Store['label'] = writable('');
+	const selectOnly: Store['selectOnly'] = writable(false);
 
 	const store: Store = {
 		query,
@@ -37,7 +39,8 @@ export const initializeStore = () => {
 		shouldFilter,
 		selected,
 		open,
-		label
+		label,
+		selectOnly
 	};
 
 	return store;

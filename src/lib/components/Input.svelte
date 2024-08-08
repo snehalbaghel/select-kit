@@ -38,7 +38,6 @@
 		}
 	}}
 	on:keydown={async (e) => {
-		console.log(e.key);
 		switch (e.key) {
 			// REFER: https://www.w3.org/WAI/ARIA/apg/patterns/combobox/examples/combobox-autocomplete-list/
 			case 'ArrowDown':

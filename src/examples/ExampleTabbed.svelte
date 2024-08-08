@@ -6,7 +6,7 @@
 	import { tabSelectItems } from './items.js';
 
 	let selectedTabIndex = 0;
-	let value: string
+	let value: string;
 
 	function tabListener(event: CustomEvent) {
 		// TODO: Fix this type casting
@@ -17,14 +17,14 @@
 			const change = keyboardEvent.shiftKey ? -1 : 1;
 			const nextIndex = (selectedTabIndex + change + tabSelectItems.length) % tabSelectItems.length;
 			selectedTabIndex = nextIndex;
-			value = ''
+			value = '';
 		}
 	}
 </script>
 
 <Select.Root
 	label="Navigation"
-	class="flex w-[480px] flex-col divide-y divide-gray-300 overflow-hidden rounded-2xl border-0 bg-white shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1)] ring-1 ring-gray-300"
+	class="flex w-[480px] flex-col overflow-hidden rounded-2xl border-0 bg-white shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1)] ring-1 ring-gray-300"
 >
 	<div class="relative inline-flex items-center">
 		<span
@@ -34,7 +34,7 @@
 		</span>
 
 		<Select.Input
-			value={value}
+			{value}
 			placeholder="Search..."
 			class="input h-14 w-full py-4 pl-14 pr-5 text-lg font-medium text-black outline-none placeholder:text-gray-200"
 			on:keydown={tabListener}

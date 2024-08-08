@@ -2,7 +2,7 @@
 	import type { HTMLAttributes } from 'svelte/elements';
 	import { onMount, tick } from 'svelte';
 	import { ITEM_ATTR, ITEM_VALUE_ATTR } from '$lib/constants.js';
-	// @ts-ignore Import from internal package
+	// @ts-expect-error Import from internal package
 	import { get_current_component } from 'svelte/internal';
 	import { forwardEventsBuilder } from '@smui/common/internal';
 	import { getStore } from '$lib/store.js';

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { tick } from 'svelte';
-	// @ts-ignore Import from internal package
+	// @ts-expect-error from internal package
 	import { get_current_component } from 'svelte/internal';
 	import { forwardEventsBuilder } from '@smui/common/internal';
 	import type { HTMLAttributes } from 'svelte/elements';

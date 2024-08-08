@@ -3,18 +3,21 @@
 This library is a one-stop solution for building WAI-ARIA compliant navigation/command/select menus. The components provided are headless so they can be styled as per your requirement, they are also [composable](https://github.com/pacocoursey/cmdk/blob/main/ARCHITECTURE.md) in nature so its easy to use. Refer the various examples below to implement the variation you want to build.
 
 <p align="center">
-    <img src="./example.png"/>
+    <img src="./src/static/images/example.png"/>
 </p>
 
 ## Installation
+
 ```bash
 npm install select-kit
 ```
 
 ## Examples
+
 For full examples refer the [examples](/src/examples) folder in this repo
 
 > **NOTE:** We use [@smui/common](https://www.npmjs.com/package/@smui/common) to forward events of our components, it works similarly to the the Svelte syntax apart from one important difference: for adding event modifiers the `|` should be replaced by `$` i.e. `on:click|preventDefault` becomes `on:click$preventDefault`. For information on this refer this [issue](https://github.com/sveltejs/svelte/issues/2837).
+
 ### Basic Example
 
 ```svelte
@@ -37,6 +40,7 @@ For full examples refer the [examples](/src/examples) folder in this repo
 ```
 
 ### Disable Filtering
+
 ListBox supports shouldFilter prop which will disable filtering, to access the input value to perform your own filtering you may bind to the input component's value prop.
 
 ```svelte
@@ -46,11 +50,10 @@ ListBox supports shouldFilter prop which will disable filtering, to access the i
 	let value = '';
 	// Add your logic here for filtering..
 </script>
+
 <Select.Root label="Numbers">
 	<Select.Input bind:value placeholder="Search something..." class="input" />
-	<Select.ListBox shouldFilter={false}>
-		...
-	</Select.ListBox>
+	<Select.ListBox shouldFilter={false}>...</Select.ListBox>
 </Select.Root>
 ...
 ```
@@ -80,18 +83,22 @@ ListBox supports shouldFilter prop which will disable filtering, to access the i
 </Select.Root>
 ```
 
-
 ### Dialog with CMD+K
+
 <!-- TODO -->
 
 ### Tabbed Example
+
 <!-- TODO -->
 
 ### Clearable Example
+
 <!-- TODO -->
 
 ### Floating Example
+
 <!-- TODO: https://svelte-select-examples.vercel.app/examples/props/floating-config -->
 
 ### Async Example (With Loader)
+
 <!-- TODO: Implementation required -->

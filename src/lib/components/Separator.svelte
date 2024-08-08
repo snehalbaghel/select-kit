@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { HTMLAttributes } from 'svelte/elements';
-	// @ts-ignore Import from internal package
+	// @ts-expect-error Import from internal package
 	import { get_current_component } from 'svelte/internal';
 	import { forwardEventsBuilder } from '@smui/common/internal';
 

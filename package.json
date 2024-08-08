@@ -35,6 +35,7 @@
 		"@sveltejs/kit": "^2.0.0",
 		"@sveltejs/package": "^2.0.0",
 		"@sveltejs/vite-plugin-svelte": "^3.0.0",
+		"@tailwindcss/typography": "^0.5.13",
 		"@testing-library/jest-dom": "^6.4.8",
 		"@testing-library/svelte": "^5.2.1",
 		"@types/eslint": "^9.6.0",
@@ -45,6 +46,7 @@
 		"eslint-plugin-svelte": "^2.36.0",
 		"globals": "^15.0.0",
 		"jsdom": "^24.1.1",
+		"mdsvex": "^0.11.2",
 		"postcss": "^8.4.40",
 		"prettier": "^3.1.1",
 		"prettier-plugin-svelte": "^3.1.2",
@@ -74,6 +76,7 @@
 	"types": "./dist/index.d.ts",
 	"type": "module",
 	"dependencies": {
-		"@smui/common": "^7.0.0"
+		"@smui/common": "^7.0.0",
+		"mdsvexamples": "^0.4.1"
 	}
 }

@@ -2,7 +2,7 @@
 	import type { HTMLInputAttributes } from 'svelte/elements';
 	import { getRelativeElementId } from '$lib/dom.js';
 	import { ITEM_ATTR } from '$lib/constants.js';
-	// @ts-ignore Import from internal package
+	// @ts-expect-error Import from internal package
 	import { get_current_component } from 'svelte/internal';
 	import { forwardEventsBuilder } from '@smui/common/internal';
 	import { getStore } from '$lib/store.js';
@@ -98,7 +98,7 @@
 	on:blur={(e) => {
 		if ($open) {
 			// If the click is within the listbox, don't close it
-			// @ts-ignore TODO: Fix this type pls
+			// @ts-expect-error TODO: Fix this type pls
 			if (e?.relatedTarget && $listBoxRef?.contains(e.relatedTarget)) {
 				return;
 			} else {

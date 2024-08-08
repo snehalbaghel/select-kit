@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { HTMLAttributes } from 'svelte/elements';
 	import { setContext } from 'svelte';
-	// @ts-ignore Import from internal package
+	// @ts-expect-error Import from internal package
 	import { get_current_component } from 'svelte/internal';
 	import { forwardEventsBuilder } from '@smui/common/internal';
 	import { initializeStore, type Store } from '$lib/store.js';

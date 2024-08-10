@@ -30,6 +30,7 @@
 	aria-controls="{$label}-listbox"
 	aria-activedescendant={$active}
 	tabindex="0"
+	autocomplete="off"
 	bind:value
 	use:forwardEvents
 	on:input={() => {

@@ -35,8 +35,7 @@
 			value = itemRef?.innerText ?? '';
 		}
 	});
-
-	$: matchesQuery = !$query || !$shouldFilter || selectOnly ? true : !!$scores[id];
+	$: matchesQuery = !$query || !$shouldFilter || $selectOnly ? true : !!$scores[id];
 	/**
 	 * The reason we hide the div instead of removing it from dom is because its our
 	 * only data source

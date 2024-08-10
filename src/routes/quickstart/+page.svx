@@ -1,16 +1,28 @@
-## Quickstart
+# Quickstart
+
 Install the package
 
 ```bash
 npm install select-kit
 ```
 
-### Basic Example
+## Basic Structure of a Combobox
+
+- `Select.Root`: The root component which sets up label, context and the store:
+  - `Select.Input`: Combobox's input, keeps track of query
+  - `Select.Combobox`: Use this if you're building a select only component
+  - `Select.ListBox`: Root component of the items
+    - `Select.Item`: A single selectable item, you will have multiple of these
+    - `Select.Separator`: Just a div with role='separator'
+    - `Select.NoResults`: Rendered when there are no results found
+- `Select.Button`: A button to toggle the list-box
+
+#### Example
 
 ```svelte
-import Select from 'select-kit';
-
-...
+<script lang="ts">
+	import Select from 'select-kit';
+</script>
 
 <Select.Root label="Numbers">
 	<Select.Input placeholder="Search something..." class="input" />
@@ -26,7 +38,4 @@ import Select from 'select-kit';
 </Select.Root>
 ```
 
-### Examples
-For full examples refer the [examples](/src/examples) folder in this repo
-
-> **NOTE:** We use [@smui/common](https://www.npmjs.com/package/@smui/common) to forward events of our components, it works similarly to the the Svelte syntax apart from one important difference: for adding event modifiers the `|` should be replaced by `$` i.e. `on:click|preventDefault` becomes `on:click$preventDefault`. For information on this refer this [issue](https://github.com/sveltejs/svelte/issues/2837).
+**NOTE:** *We use [@smui/common](https://www.npmjs.com/package/@smui/common) to forward events to our components, it works similarly to the the Svelte syntax apart from one important difference: for adding event modifiers the `|` should be replaced by `$` i.e. `on:click|preventDefault` becomes `on:click$preventDefault`. For information on this refer this [issue](https://github.com/sveltejs/svelte/issues/2837).*

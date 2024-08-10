@@ -9,13 +9,13 @@
 
 	interface $$Props extends Partial<HTMLAttributes<HTMLDivElement>> {
 		id: string;
-		onSelectItem: (id: string) => void;
+		onSelectItem?: (id: string) => void;
 		value?: string | undefined;
 	}
 
 	export let id: string;
 	export let value: string = '';
-	export let onSelectItem: $$Props['onSelectItem'];
+	export let onSelectItem: $$Props['onSelectItem'] = undefined;
 	const forwardEvents = forwardEventsBuilder(get_current_component());
 
 	const { query, scores, active, shouldFilter, open, selectOnly, selected } = getStore();
@@ -63,10 +63,15 @@
 	role="option"
 	aria-selected={isSelected}
 	tabindex={-1}
+	on:pointermove={() => {
+		if (!isActive) {
+			active.set(id);
+		}
+	}}
 	on:click={async () => {
 		query.set(value);
 		selected.set(id);
-		onSelectItem(id);
+		onSelectItem?.(id);
 		await tick();
 		open.set(false);
 	}}

@@ -1,6 +1,35 @@
-<script>
+<script lang="ts">
+	import { onMount } from 'svelte';
 	import '../app.css';
 	import IconSvelte from '../lib/Icons/IconSvelte.svelte';
+	import IconTailwind from '../lib/Icons/IconTailwind.svelte';
+
+	const guides = [
+		{ title: 'Introduction', path: '/introduction' },
+		{ title: 'Quickstart', path: '/quickstart' },
+		{ title: 'Options', path: '/options' }
+	];
+
+	const docs = [
+		{ title: 'Combobox (Headless)', path: '/examples/headless', tw: false },
+		{ title: 'Select (Headless)', path: '/examples/headless-select', tw: false },
+		{ title: 'With Button (Headless)', path: '/examples/button', tw: false },
+		{ title: 'Clearable', path: '/examples/clearable', tw: true },
+		{ title: 'With Tabs', path: '/examples/with-tabs', tw: true },
+		{ title: 'Dialog', path: '/examples/dialog', tw: true },
+		{ title: 'Floating Menu', path: '/examples/floating', tw: true }
+	];
+
+	const setTheme = (theme: 'dark' | 'light') => {
+		document.cookie = `theme=${theme};max-age=31536000;path="/"`
+
+		if (theme === 'light') {
+			document.documentElement.classList.remove('dark');
+		} else {
+			document.documentElement.classList.add('dark')
+		}
+	}
+
 </script>
 
 <div class="h-full lg:ml-72 xl:ml-80">
@@ -76,10 +105,20 @@
 							></button
 						>
 					</div> -->
-					<!-- <button
+					<button
 						type="button"
 						class="flex h-6 w-6 items-center justify-center rounded-md transition hover:bg-zinc-900/5 dark:hover:bg-white/5"
 						aria-label="Switch to dark theme"
+						on:click={() => {
+							const currentTheme = document.documentElement.className.includes('dark') ? 'dark' : 'light'
+							if (
+								currentTheme === 'dark'
+							) {
+								setTheme('light')
+							} else {
+								setTheme('dark')
+							}
+						}}
 						><svg
 							viewBox="0 0 20 20"
 							fill="none"
@@ -97,7 +136,7 @@
 							><path d="M15.224 11.724a5.5 5.5 0 0 1-6.949-6.949 5.5 5.5 0 1 0 6.949 6.949Z"
 							></path></svg
 						></button
-					> -->
+					>
 					<!-- </div> -->
 				</div>
 			</div>
@@ -111,95 +150,36 @@
 					</li>
 					<li class="relative mt-6 md:mt-0">
 						<h2 class="text-xs font-semibold text-zinc-900 dark:text-white">Guide</h2>
-						<div class="relative mt-3 pl-2">
-							<div class="absolute inset-y-0 left-2 w-px bg-zinc-900/10 dark:bg-white/5"></div>
+						<div class="relative mt-3">
 							<ul role="list" class="border-l border-transparent">
-								<li class="relative">
-									<a
-										class="flex justify-between gap-2 py-1 pr-3 text-sm transition pl-4 text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
-										href="/introduction"><span class="truncate">Introduction</span></a
-									>
-								</li>
-								<li class="relative">
-									<a
-										class="flex justify-between gap-2 py-1 pr-3 text-sm transition pl-4 text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
-										href="/quickstart"><span class="truncate">Quickstart</span></a
-									>
-								</li>
-								<li class="relative">
-									<a
-										class="flex justify-between gap-2 py-1 pr-3 text-sm transition pl-4 text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
-										href="/options"><span class="truncate">Options</span></a
-									>
-								</li>
+								{#each guides as guide}
+									<li class="relative">
+										<a
+											class="flex justify-between gap-2 py-1 pr-3 text-sm transition pl-4 text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
+											href={guide.path}><span class="truncate">{guide.title}</span></a
+										>
+									</li>
+								{/each}
 							</ul>
 						</div>
 					</li>
 					<li class="relative mt-6">
 						<h2 class="text-xs font-semibold text-zinc-900 dark:text-white">Examples</h2>
-						<div class="relative mt-3 pl-2">
-							<div
-								class="absolute inset-x-0 top-0 bg-zinc-800/2.5 will-change-transform dark:bg-white/2.5"
-								style="height: 32px; top: 64px; border-radius: 8px; opacity: 1; transform: none; transform-origin: 50% 50% 0px;"
-							></div>
-							<div class="absolute inset-y-0 left-2 w-px bg-zinc-900/10 dark:bg-white/5"></div>
-							<div
-								class="absolute left-2 h-6 w-px bg-emerald-500"
-								style="top: 68px; opacity: 1; transform: none; transform-origin: 50% 50% 0px;"
-							></div>
+						<div class="relative mt-3">
 							<ul role="list" class="border-l border-transparent">
-								<li class="relative">
-									<a
-										class="flex justify-between gap-2 py-1 pr-3 text-sm transition pl-4 text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
-										href="/examples/headless"><span class="truncate">Combobox (Headless)</span></a
-									>
-								</li>
-								<li class="relative">
-									<a
-										class="flex justify-between gap-2 py-1 pr-3 text-sm transition pl-4 text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
-										href="/examples/headless-select"
-										><span class="truncate">Select (Headless)</span></a
-									>
-								</li>
-								<li class="relative">
-									<a
-										class="flex justify-between gap-2 py-1 pr-3 text-sm transition pl-4 text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
-										href="/examples/dropdown"><span class="truncate">Dropdown</span></a
-									>
-								</li>
-								<li class="relative">
-									<a
-										class="flex justify-between gap-2 py-1 pr-3 text-sm transition pl-4 text-zinc-900 dark:text-white"
-										href="/examples/dialog"
-										aria-current="page"><span class="truncate">Dialog</span></a
-									>
-								</li>
-								<li class="relative">
-									<a
-										class="flex justify-between gap-2 py-1 pr-3 text-sm transition pl-4 text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
-										href="/examples/clearable"><span class="truncate">Clearable</span></a
-									>
-								</li>
-								<li class="relative">
-									<a
-										class="flex justify-between gap-2 py-1 pr-3 text-sm transition pl-4 text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
-										href="/examples/with-tabs"><span class="truncate">With Tabs</span></a
-									>
-								</li>
-								<li class="relative">
-									<a
-										class="flex justify-between gap-2 py-1 pr-3 text-sm transition pl-4 text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
-										href="/examples/floating"><span class="truncate">Floating UI</span></a
-									>
-								</li>
+								{#each docs as doc}
+									<li class="relative flex items-center justify-between">
+										<a
+											class="flex justify-between gap-2 py-1 pr-3 text-sm transition pl-4 text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
+											href={doc.path}><span class="truncate">{doc.title}</span></a
+										>
+										{#if doc.tw}
+											<IconTailwind class="h-2" />
+										{/if}
+									</li>
+								{/each}
 							</ul>
 						</div>
-					</li>
-					<li class="sticky bottom-0 z-10 mt-6 min-[416px]:hidden">
-						<a
-							class="inline-flex gap-0.5 justify-center overflow-hidden text-sm font-medium transition rounded-full bg-zinc-900 py-1 px-3 text-white hover:bg-zinc-700 dark:bg-emerald-500 dark:text-white dark:hover:bg-emerald-400 w-full"
-							href="#">Sign in</a
-						>
 					</li>
 				</ul>
 			</nav>

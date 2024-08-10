@@ -1,6 +1,6 @@
 <!-- Modified version of: https://github.com/themesberg/flowbite-svelte/blob/main/src/routes/utils/ExampleWrapper.svelte -->
 <script lang="ts">
-	export let divClass = 'w-full mx-auto bg-gradient-to-r bg-white dark:bg-gray-900 p-6';
+	export let divClass = 'w-full mx-auto bg-gradient-to-r bg-white dark:bg-zinc-900 p-6';
 
 	// the source of the example, if you want it
 	export let src: any = undefined;
@@ -75,16 +75,16 @@
 		</div>
 	{/if}
 
-	<div class="relative rounded-2xl border-gray-200 border-y border-x dark:border-gray-600">
+	<div class="relative rounded-2xl border-gray-200 border-y border-x dark:border-zinc-800">
 		<div
-			class="grid w-full grid-cols-2 border-b border-gray-200 bg-gray-50 rounded-t-2xl dark:bg-gray-700 dark:border-gray-600"
+			class="grid w-full grid-cols-2 border-b border-gray-200 bg-gray-50 rounded-t-2xl dark:bg-zinc-900 dark:border-zinc-800"
 		>
 			<div />
 			<div class="flex justify-end">
 				<button
 					on:click={(e) => copyToClipboard(e)}
 					type="button"
-					class="flex items-center px-3 py-2 text-sm rounded-tr-2xl font-medium text-gray-600 bg-gray-100 border-s border-gray-200 dark:border-gray-600 dark:text-gray-400 dark:bg-gray-800 hover:text-primary-700 dark:hover:text-white copy-to-clipboard-button"
+					class="flex items-center px-3 py-2 text-sm rounded-tr-2xl font-medium text-gray-600 bg-gray-100 border-s border-gray-200 dark:border-zinc-800 dark:text-gray-400 dark:bg-zinc-900 hover:text-primary-700 dark:hover:text-white copy-to-clipboard-button"
 				>
 					<svg
 						class="w-4 h-4 me-2"
@@ -120,7 +120,7 @@
 					on:click={() => (expand = !expand)}
 					data-expand-code=""
 					type="button"
-					class="absolute bottom-0 start-0 py-2.5 rounded-b-2xl px-5 w-full text-sm font-medium text-gray-900 bg-gray-100 border-t border-gray-200 hover:bg-gray-100 hover:text-primary-700 dark:bg-gray-700 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+					class="absolute bottom-0 start-0 py-2.5 rounded-b-2xl px-5 w-full text-sm font-medium text-gray-900 bg-gray-100 border-t border-gray-200 hover:bg-gray-100 hover:text-primary-700 dark:bg-zinc-900 dark:text-gray-400 dark:border-zinc-800 dark:hover:text-white dark:hover:bg-zinc-800"
 				>
 					Expand code
 				</button>

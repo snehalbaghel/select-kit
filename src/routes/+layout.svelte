@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { page } from '$app/stores';  
 	import '../app.css';
 	import IconSvelte from '../lib/Icons/IconSvelte.svelte';
 	import IconTailwind from '../lib/Icons/IconTailwind.svelte';
@@ -156,6 +156,7 @@
 									<li class="relative">
 										<a
 											class="flex justify-between gap-2 py-1 pr-3 text-sm transition pl-4 text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
+											class:font-bold={$page.url.pathname === guide.path}
 											href={guide.path}><span class="truncate">{guide.title}</span></a
 										>
 									</li>
@@ -171,6 +172,7 @@
 									<li class="relative flex items-center justify-between">
 										<a
 											class="flex justify-between gap-2 py-1 pr-3 text-sm transition pl-4 text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
+											class:font-bold={$page.url.pathname === doc.path}
 											href={doc.path}><span class="truncate">{doc.title}</span></a
 										>
 										{#if doc.tw}

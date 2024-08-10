@@ -1,4 +1,4 @@
-# Clearable Example 
+## Clearable Example 
 
 ```svelte example
 <script lang="ts">

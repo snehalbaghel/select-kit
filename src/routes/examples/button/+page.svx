@@ -1,6 +1,4 @@
-# With Button 
-
-The chart is rendered inside our MDsveX document.
+## With Button 
 
 ```svelte example
 <script lang="ts">

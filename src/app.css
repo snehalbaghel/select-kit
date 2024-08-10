@@ -53,7 +53,7 @@
 	--prism-marker-font-size: 0.8em;
   
 	/* Font */
-	--prism-font-size: 1em;
+	--prism-font-size: 0.875em;
 	--prism-line-height: 1.5em;
 	--prism-font-family: monospace;
 	--prism-inline-font-size: var(--prism-font-size);
@@ -262,7 +262,7 @@
 	background: var(--prism-line-highlight-background);
   }
 
-  :root {
+html:not(.dark) {
 	--prism-foreground: #393a34;
 	--prism-background: #fbfbfb;
 	--prism-comment: #a0ada0;
@@ -284,7 +284,7 @@
 	--prism-json-property: #698c96;
   }
 
-  :root {
+html.dark {
 	--prism-scheme: dark;
 	--prism-foreground: #d4cfbf;
 	--prism-background: #1e1e1e;
@@ -310,3 +310,15 @@
 	--prism-line-highlight-background: #444444;
 	--prism-selection-background: #444444;
   }
+
+pre {
+	border-radius: 0.75rem !important;
+}
+
+div[data-active='true'] {
+	background-color: gray;
+}
+
+.document {
+	width: 65ch;
+}

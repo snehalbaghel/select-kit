@@ -68,7 +68,7 @@
 
 <div class="not-prose" use:init>
 	{#if !meta.hideOutput}
-		<div class="flex justify-center min-h-52">
+		<div class="flex justify-center min-h-96">
 			<div class="mb-10 mt-3">
 				<slot name="example" />
 			</div>

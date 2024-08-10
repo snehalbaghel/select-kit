@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { HTMLAttributes } from 'svelte/elements';
 	import { onMount, tick } from 'svelte';
-	import { ITEM_ATTR, ITEM_VALUE_ATTR } from '$lib/constants.js';
+	import { ITEM_ACTIVE_ATTR, ITEM_ATTR, ITEM_VALUE_ATTR } from '$lib/constants.js';
 	// @ts-expect-error Import from internal package
 	import { get_current_component } from 'svelte/internal';
 	import { forwardEventsBuilder } from '@smui/common/internal';
@@ -21,6 +21,8 @@
 	const { query, scores, active, shouldFilter, open, selectOnly, selected } = getStore();
 
 	let itemRef: HTMLDivElement | undefined;
+	$: isSelected = $selected === id;
+	$: isActive = $active === id;
 	$: if (!id) {
 		throw Error('Each item requires a unique id');
 	}
@@ -49,9 +51,9 @@
 	$: navAIItemAttrs = {
 		[ITEM_ATTR]: true,
 		[ITEM_VALUE_ATTR]: value,
+		[ITEM_ACTIVE_ATTR]: !!isActive,
 		...hiddenAttrs
 	};
-	$: isSelected = $active === id;
 </script>
 
 <div
@@ -61,16 +63,6 @@
 	{id}
 	role="option"
 	aria-selected={isSelected}
-	on:pointermove={(event) => {
-		// TODO: is this spec?
-		if (!isSelected) {
-			active.set(id);
-		}
-
-		if ($$restProps.onpointermove) {
-			$$restProps.onpointermove(event);
-		}
-	}}
 	tabindex={-1}
 	on:click={async () => {
 		query.set(value);

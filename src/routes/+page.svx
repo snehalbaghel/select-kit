@@ -1,6 +1,3 @@
-<script>
-	import '../app.css'
-</script>
 # Here’s an example
 
 The chart is rendered inside our MDsveX document.

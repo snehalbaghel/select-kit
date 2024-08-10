@@ -3,7 +3,7 @@
 -->
 <script lang="ts">
 	import Select from '$lib/index.js';
-	import { tabSelectItems } from './items.js';
+	import { tabSelectItems } from '../routes/examples/items.js';
 
 	let selectedTabIndex = 0;
 	let value: string;
@@ -65,7 +65,7 @@
 				id={item.name}
 				onSelectItem={() => null}
 				value={item.name}
-				class="flex cursor-pointer items-start gap-3 rounded-lg bg-white p-3 aria-selected:bg-gray-100 focus:outline-none"
+				class="flex cursor-pointer items-start gap-3 rounded-lg bg-white p-3 data-[active=true]:bg-gray-100 focus:outline-none"
 			>
 				<svg
 					width="24"

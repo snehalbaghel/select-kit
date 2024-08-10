@@ -10,7 +10,6 @@ const config = {
 	preprocess: [
 		vitePreprocess(),
 		mdsvex({
-			layout: './src/layout.svx.svelte',
 			remarkPlugins: [[examples, { defaults: { Wrapper: '/src/mdsvex/CodeWrapper.svelte' } }]]
 		})
 	],

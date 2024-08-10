@@ -204,7 +204,9 @@
 			</nav>
 		</div>
 	</header>
-	<div class="relative flex h-full flex-col px-4 py-20 sm:px-6 lg:px-8">
-		<slot />
+	<div class="relative flex h-full flex-col px-4 my-20 sm:px-6 lg:px-8">
+		<div class="prose dark:prose-invert">
+			<slot />
+		</div>
 	</div>
 </div>

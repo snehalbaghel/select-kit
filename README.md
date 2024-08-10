@@ -12,6 +12,23 @@ This library is a one-stop solution for building WAI-ARIA compliant navigation/c
 npm install select-kit
 ```
 
+## Basic Structure of a Combobox
+
+- `Select.Root`: The root component which sets up label, context and the store:
+  - `Select.Input`: Combobox's input, keeps track of query
+  - `Select.Combobox`: Use this if you're building a select only component
+  - `Select.ListBox`: Root component of the items
+    - `Select.Item`: A single selectable item, you will have multiple of these
+    - `Select.Separator`: Just a div with role='separator'
+    - `Select.NoResults`: Rendered when there are no results found
+- `Select.Button`: A button to toggle the list-box
+
+## Stable Release TODOS:
+
+- [ ] Multiselect Support
+- [ ] Type Ahead Support for 'Select Only' combobox
+- [ ] Some API improvements
+
 ## Examples
 
 For full examples refer the [examples](/src/examples) folder in this repo

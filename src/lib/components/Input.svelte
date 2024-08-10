@@ -86,6 +86,7 @@
 				} else if ($query) {
 					query.set('');
 				}
+				break;
 			default:
 				break;
 		}

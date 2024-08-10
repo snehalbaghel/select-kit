@@ -4,7 +4,7 @@
 <script lang="ts">
 	import Select from '$lib/index.js';
 	import { onMount } from 'svelte';
-	import { items } from './items.js';
+	import { items } from '../routes/examples/items.js';
 
 	let showModal = false;
 	let dialog: HTMLDialogElement | null = null;
@@ -81,7 +81,7 @@
 							id={item.name}
 							onSelectItem={() => null}
 							value={item.name}
-							class="flex cursor-pointer items-start gap-3 rounded-lg bg-white p-3 aria-selected:bg-gray-100"
+							class="flex cursor-pointer items-start gap-3 rounded-lg bg-white p-3 data-[active=true]:bg-gray-100"
 						>
 							<svg
 								width="24"

@@ -1,9 +1,39 @@
 <script>
 import Example from '../../examples/ExampleClearable.svelte'
 </script>
-# Select Kit
+# Introduction
 
-This library is a one-stop solution for building WAI-ARIA compliant navigation/command/select menus. The components provided are headless so they can be styled as per your requirement, they are also [composable](https://github.com/pacocoursey/cmdk/blob/main/ARCHITECTURE.md) in nature so its easy to use. Refer the various examples below to implement the variation you want to build.
-<div class="not-prose">
-<Example />
-</div>
+This library is a one-stop solution for building WAI-ARIA compliant navigation/command/select menus. The components provided are headless so they can be styled as per your requirement, they are also composable in nature so its easy to use. The architecture is inspired by cmdk, you can read their arch [doc](https://github.com/pacocoursey/cmdk/blob/main/ARCHITECTURE.md) to get some context.
+
+*To get started quickly you can copy one of the headless examples or one of the styled (tailwind) examples and start hacking.*
+
+## Basic Structure of a Combobox
+
+- `Select.Root`: The root component which sets up label, context and the store:
+  - `Select.Input`: Combobox's input, keeps track of query
+  - `Select.Combobox`: Use this if you're building a select only component
+  - `Select.ListBox`: Root component of the items
+    -  `Select.Item`: A single selectable item, you will have multiple of these
+    - `Select.Separator`: Just a div with role='separator'
+    - `Select.NoResults`: Rendered when there are no results found
+- `Select.Button`: A button to toggle the list-box
+
+```svelte
+<script lang="ts">
+	import Select from 'select-kit';
+</script>
+
+<Select.Root label="Numbers">
+	<Select.Input placeholder="Search something..." class="input" />
+	<Select.ListBox let:open>
+		{#if open}
+			<Select.NoResults>No results found</Select.NoResults>
+			<Select.Item onSelectItem={() => console.log('clicked one')} id="one">One</Select.Item>
+			<Select.Item onSelectItem={() => console.log('clicked two')} id="two">Two</Select.Item>
+			<Select.Item onSelectItem={() => console.log('clicked three')} id="three">Three</Select.Item>
+			<Select.Item onSelectItem={() => console.log('clicked four')} id="four">Four</Select.Item>
+		{/if}
+	</Select.ListBox>
+</Select.Root>
+```
+

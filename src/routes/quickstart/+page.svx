@@ -1,0 +1,32 @@
+## Quickstart
+Install the package
+
+```bash
+npm install select-kit
+```
+
+### Basic Example
+
+```svelte
+import Select from 'select-kit';
+
+...
+
+<Select.Root label="Numbers">
+	<Select.Input placeholder="Search something..." class="input" />
+	<Select.ListBox let:open>
+		{#if open}
+			<Select.Item id="one">One</Select.Item>
+			<Select.Item id="two">Two</Select.Item>
+			<Select.Item id="three">Three</Select.Item>
+			<Select.Item id="four">Four</Select.Item>
+            <Select.NoResults>No results found</Select.NoResults>
+		{/if}
+	</Select.ListBox>
+</Select.Root>
+```
+
+### Examples
+For full examples refer the [examples](/src/examples) folder in this repo
+
+> **NOTE:** We use [@smui/common](https://www.npmjs.com/package/@smui/common) to forward events of our components, it works similarly to the the Svelte syntax apart from one important difference: for adding event modifiers the `|` should be replaced by `$` i.e. `on:click|preventDefault` becomes `on:click$preventDefault`. For information on this refer this [issue](https://github.com/sveltejs/svelte/issues/2837).

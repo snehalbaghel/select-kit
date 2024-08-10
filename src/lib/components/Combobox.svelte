@@ -5,17 +5,12 @@
 	import { get_current_component } from 'svelte/internal';
 	import { forwardEventsBuilder } from '@smui/common/internal';
 	import { getStore } from '$lib/store.js';
-	import { onMount } from 'svelte';
 
 	let timeout: number | undefined;
 
-	onMount(() => {
-		getStore().selectOnly.set(true);
-	});
-
 	const forwardEvents = forwardEventsBuilder(get_current_component());
-	const { active, listBoxRef, label, open, query, selected } = getStore();
-
+	const { active, listBoxRef, label, open, query, selected, selectOnly } = getStore();
+	$: selectOnly.set(true);
 </script>
 
 <!-- TODO: Add home, end, pageup, pagedown listeners -->

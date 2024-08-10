@@ -1,7 +1,0 @@
-<script>
-import Example from '../../../examples/ExampleSelectOnly.svelte'
-</script>
-
-<div class="not-prose">
-    <Example />
-</div>

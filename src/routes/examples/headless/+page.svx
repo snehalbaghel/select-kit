@@ -1,0 +1,23 @@
+## Headless Combobox
+
+To get highlighting on items select-kit adds `data-active="true"` (for active item) and `aria-selected="true"` (for selected item). Use appropriate selectors to style them.
+
+```svelte example
+<script lang="ts">
+	import Select from '$lib/index.js';
+</script>
+
+
+<Select.Root label="numbers">
+	<Select.Input placeholder="Search something..." class="input" />
+	<Select.ListBox let:open>
+		<Select.NoResults>No results found</Select.NoResults>
+        {#if open}
+		<Select.Item id="one">One</Select.Item>
+		<Select.Item id="two">Two</Select.Item>
+		<Select.Item id="three">Three</Select.Item>
+		<Select.Item id="four">Four</Select.Item>
+        {/if}
+	</Select.ListBox>
+</Select.Root>
+```

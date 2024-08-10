@@ -63,7 +63,7 @@
 				}
 				break;
 			default:
-				// // This block keeps track of search query entered in quick succession
+				// This block keeps track of search query entered in quick succession
 				if (e.key.length === 1 && !e.altKey && !e.metaKey && !e.ctrlKey) {
 					if (typeof timeout === 'number') {
 						clearTimeout(timeout);

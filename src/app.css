@@ -434,9 +434,13 @@ pre > code.diff-highlight .token.token.inserted:not(.prefix) *::selection {
 }
 
 pre {
-	border-radius: .75rem !important;
+	border-radius: 0.75rem !important;
 }
 
-div[data-active="true"] {
+div[data-active='true'] {
 	background-color: gray;
+}
+
+.document {
+	width: 65ch;
 }

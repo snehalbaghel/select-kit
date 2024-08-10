@@ -16,7 +16,7 @@ npm install select-kit
 
 - `Select.Root`: The root component which sets up label, context and the store:
   - `Select.Input`: Combobox's input, keeps track of query
-  - `Select.Combobox`: Use this if you're building a select only component
+  - `Select.Select`: Use this if you're building a select only component
   - `Select.ListBox`: Root component of the items
     - `Select.Item`: A single selectable item, you will have multiple of these
     - `Select.Separator`: Just a div with role='separator'

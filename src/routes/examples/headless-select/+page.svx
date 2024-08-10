@@ -1,0 +1,22 @@
+## Headless Select
+
+```svelte example
+<script lang="ts">
+	import Select from '$lib/index.js';
+</script>
+
+<Select.Root label="select-only-example">
+	<Select.Select class="input" let:selected>
+		{selected || 'Select a number...'}
+	</Select.Select>
+	<Select.ListBox selectOnly let:open>
+		{#if open}
+			<Select.NoResults>No results found</Select.NoResults>
+			<Select.Item id="one">One</Select.Item>
+			<Select.Item id="two">Two</Select.Item>
+			<Select.Item id="three">Three</Select.Item>
+			<Select.Item id="four">Four</Select.Item>
+		{/if}
+	</Select.ListBox>
+</Select.Root>
+```

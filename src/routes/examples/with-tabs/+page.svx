@@ -1,9 +1,6 @@
-# With Tabs Example 
+# With Tabs
 
 ```svelte example
-<!-- 
-	Basic example for tab select
--->
 <script lang="ts">
 	import Select from '$lib/index.js';
 	import { tabSelectItems } from '../items.ts';

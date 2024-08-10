@@ -6,9 +6,9 @@
 </script>
 
 <Select.Root label="select-only-example">
-	<Select.Combobox class="input" let:selected>
+	<Select.Select class="input" let:selected>
 		{selected || 'Select a number...'}
-	</Select.Combobox>
+	</Select.Select>
 	<Select.ListBox selectOnly let:open>
 		{#if open}
 			<Select.NoResults>No results found</Select.NoResults>

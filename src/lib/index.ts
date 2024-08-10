@@ -6,9 +6,9 @@ import Separator from '$lib/components/Separator.svelte';
 import NoResults from './components/NoResults.svelte';
 import Root from '$lib/components/Root.svelte';
 import Button from './components/Button.svelte';
-import Combobox from './components/Combobox.svelte';
+import Select from './components/Select.svelte';
 
-const Select = {
+const SelectLib = {
 	Input,
 	ListBox,
 	Item,
@@ -16,8 +16,8 @@ const Select = {
 	NoResults,
 	Root,
 	Button,
-	Combobox
+	Select
 };
 
-export default Select;
+export default SelectLib;
 export { getStore } from '$lib/store.js';

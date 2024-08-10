@@ -151,7 +151,14 @@
 								<li class="relative">
 									<a
 										class="flex justify-between gap-2 py-1 pr-3 text-sm transition pl-4 text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
-										href="/examples/basic"><span class="truncate">Basic</span></a
+										href="/examples/headless"><span class="truncate">Combobox (Headless)</span></a
+									>
+								</li>
+								<li class="relative">
+									<a
+										class="flex justify-between gap-2 py-1 pr-3 text-sm transition pl-4 text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
+										href="/examples/headless-select"
+										><span class="truncate">Select (Headless)</span></a
 									>
 								</li>
 								<li class="relative">
@@ -185,12 +192,6 @@
 										href="/examples/floating"><span class="truncate">Floating UI</span></a
 									>
 								</li>
-								<li class="relative">
-									<a
-										class="flex justify-between gap-2 py-1 pr-3 text-sm transition pl-4 text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
-										href="/examples/select"><span class="truncate">Select</span></a
-									>
-								</li>
 							</ul>
 						</div>
 					</li>
@@ -205,7 +206,7 @@
 		</div>
 	</header>
 	<div class="relative flex h-full flex-col px-4 my-20 sm:px-6 lg:px-8">
-		<div class="prose dark:prose-invert">
+		<div class="prose dark:prose-invert document">
 			<slot />
 		</div>
 	</div>

@@ -8,9 +8,13 @@
 	import { getStore } from '$lib/store.js';
 	import { tick } from 'svelte';
 
-	interface $$Props extends Partial<HTMLInputAttributes> {}
+	interface $$Props extends Partial<HTMLInputAttributes> {
+		autocomplete?: string
+	}
 
 	export let value = '';
+	export let autocomplete = 'off';
+
 	const forwardEvents = forwardEventsBuilder(get_current_component());
 	const { active, query, listBoxRef, label, open } = getStore();
 
@@ -30,7 +34,7 @@
 	aria-controls="{$label}-listbox"
 	aria-activedescendant={$active}
 	tabindex="0"
-	autocomplete="off"
+	autocomplete={autocomplete}
 	bind:value
 	use:forwardEvents
 	on:input={() => {

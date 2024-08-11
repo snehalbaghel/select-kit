@@ -77,7 +77,7 @@
 	}}
 	use:forwardEvents
 >
-	<slot />
+	<slot isSelected={isSelected} isActive={isActive} />
 </div>
 
 <style>

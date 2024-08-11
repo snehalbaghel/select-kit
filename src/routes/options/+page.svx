@@ -1,0 +1,89 @@
+# Options
+
+**NOTE:** *We use [@smui/common](https://www.npmjs.com/package/@smui/common) to forward events to our components, it works similarly to the the Svelte syntax apart from one important difference: for adding event modifiers the `|` should be replaced by `$` i.e. `on:click|preventDefault` becomes `on:click$preventDefault`. For information on this refer this [issue](https://github.com/sveltejs/svelte/issues/2837).*
+
+## Button
+
+#### Component Props
+
+- `label`?: optional, will take root label if not provided
+
+#### Slot Props
+
+- `open`: If the combobox is open
+
+*Element Type `<button>`*
+
+## Input
+
+#### Component Props
+
+- `autocomplete`?: [HTML autocomplete attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete), defaults to 'off'
+- `value`?: Use this to bind to input value
+
+*Element Type  `<input>`*
+
+## Item
+
+#### Component Props
+
+- `onSelectItem(id: string)`?: Callback for when an item is selected
+- `value`?: Value of the item, select-kit uses this to perform filtering. If not provided innerText is used.
+- `id`: **required** Unique id of the item
+
+#### Slot Props:
+
+- `isSelected`: If the item is selected
+- `isActive`: If the item is active
+
+*You may want to use the above props for styling however select-kit also adds **HTML attributes** to the div element (not the slot element) if you want to style it that way:*
+
+- `aria-selected`: "true" value indicates the item is selected
+- `data-active`: "true" value indicates the item is active
+
+*Element Type `<div>`*
+
+## ListBox
+
+#### Component Props: 
+
+- `open`?: Passing this prop will make it a controlled prop, select-kit will update the values automatically
+- `shouldFilter`?: If you want select-kit to perform filtering
+- `label`?: Label of the listbox, will use root label if not provided
+- `selectOnly`: Set this if you are building a select only component (see example)
+
+#### Slot Props:
+
+- `open`: If the listbox is open
+
+*Element Type `<div>`*
+
+## Root
+
+#### Component Props: 
+
+- `label`: Label of the combobox
+
+#### Slot Props:
+
+- `query`: Input value
+- `open`: If the listbox should be open
+- `active`: Active item ID
+- `selected`: Selected item id
+
+*Element Type `<div>`*
+
+## Select
+
+#### Slot Props:
+-  `selected`: Selected item id
+
+*Element Type `<div>`*
+
+## NoResults 
+
+*Element Type `<div>`*
+
+## Separator
+
+*Element Type `<div>`*

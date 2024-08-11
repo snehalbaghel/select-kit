@@ -3,7 +3,7 @@
 This library is a one-stop solution for building WAI-ARIA compliant navigation/command/select menus. The components provided are headless so they can be styled as per your requirement, they are also [composable](https://github.com/pacocoursey/cmdk/blob/main/ARCHITECTURE.md) in nature so its easy to use. Refer the various examples below to implement the variation you want to build.
 
 <p align="center">
-    <img src="./src/static/images/example.png"/>
+    <img src="./static/images/example.png"/>
 </p>
 
 ## Installation

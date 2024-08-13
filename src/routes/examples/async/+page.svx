@@ -1,0 +1,38 @@
+## Async Example
+
+```svelte example
+<script lang="ts">
+    import Select from '$lib/index.js';
+    import { items } from '../items.ts';
+
+    let data = [];
+    let timeout = null
+
+    function fetchItems (q: string) {
+        if (timeout) {
+            clearTimeout(timeout)
+        }
+
+        // Your API call goes here instead
+        timeout = setTimeout(() => {
+            data = items.filter(
+                (i) => i.name.toLowerCase().includes(q.toLowerCase()))
+        }, 300)
+    }
+</script>
+
+<Select.Root label="numbers">
+	<Select.Input
+        placeholder="Search something..."
+        on:input={(e) => fetchItems(e.target.value)}
+    />
+	<Select.ListBox shouldFilter={false} let:open>
+		<Select.NoResults>No results found</Select.NoResults>
+        {#if open}
+            {#each data as item}
+                <Select.Item id={item.name}>{item.name}</Select.Item>
+            {/each}
+        {/if}
+	</Select.ListBox>
+</Select.Root>
+```

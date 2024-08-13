@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { page } from '$app/stores';  
+	import { page } from '$app/stores';
 	import '../app.css';
 	import IconSvelte from '../lib/Icons/IconSvelte.svelte';
 	import IconTailwind from '../lib/Icons/IconTailwind.svelte';
@@ -11,9 +11,10 @@
 	];
 
 	const docs = [
-		{ title: 'Combobox (Headless)', path: '/examples/headless', tw: false },
-		{ title: 'Select (Headless)', path: '/examples/headless-select', tw: false },
-		{ title: 'With Button (Headless)', path: '/examples/button', tw: false },
+		{ title: 'Basic Combobox', path: '/examples/headless', tw: false },
+		{ title: 'Select', path: '/examples/headless-select', tw: false },
+		{ title: 'Async', path: '/examples/async', tw: false },
+		{ title: 'With Button', path: '/examples/button', tw: false },
 		{ title: 'Clearable', path: '/examples/clearable', tw: true },
 		{ title: 'With Tabs', path: '/examples/with-tabs', tw: true },
 		{ title: 'Dialog', path: '/examples/dialog', tw: true },
@@ -21,15 +22,14 @@
 	];
 
 	const setTheme = (theme: 'dark' | 'light') => {
-		document.cookie = `theme=${theme};max-age=31536000;path="/"`
+		document.cookie = `theme=${theme};max-age=31536000;path="/"`;
 
 		if (theme === 'light') {
 			document.documentElement.classList.remove('dark');
 		} else {
-			document.documentElement.classList.add('dark')
+			document.documentElement.classList.add('dark');
 		}
-	}
-
+	};
 </script>
 
 <div class="h-full lg:ml-72 xl:ml-80">
@@ -110,13 +110,13 @@
 						class="flex h-6 w-6 items-center justify-center rounded-md transition hover:bg-zinc-900/5 dark:hover:bg-white/5"
 						aria-label="Switch to dark theme"
 						on:click={() => {
-							const currentTheme = document.documentElement.className.includes('dark') ? 'dark' : 'light'
-							if (
-								currentTheme === 'dark'
-							) {
-								setTheme('light')
+							const currentTheme = document.documentElement.className.includes('dark')
+								? 'dark'
+								: 'light';
+							if (currentTheme === 'dark') {
+								setTheme('light');
 							} else {
-								setTheme('dark')
+								setTheme('dark');
 							}
 						}}
 						><svg

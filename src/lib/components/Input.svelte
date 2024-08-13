@@ -9,7 +9,7 @@
 	import { tick } from 'svelte';
 
 	interface $$Props extends Partial<HTMLInputAttributes> {
-		autocomplete?: string
+		autocomplete?: string;
 	}
 
 	export let value = '';
@@ -34,7 +34,7 @@
 	aria-controls="{$label}-listbox"
 	aria-activedescendant={$active}
 	tabindex="0"
-	autocomplete={autocomplete}
+	{autocomplete}
 	bind:value
 	use:forwardEvents
 	on:input={() => {

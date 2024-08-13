@@ -11,4 +11,4 @@ export const theme = {
 	}
 };
 export const plugins = [typography];
-export const darkMode = 'selector'
+export const darkMode = 'selector';

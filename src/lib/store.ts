@@ -54,7 +54,7 @@ export const getStore = () => {
 	const storeObj = getContext<Store>('store');
 	if (!storeObj) {
 		throw Error(
-			"svelte-select: Unable to get context, make you've wrapped your components with the Root component!"
+			"svelte-select: Unable to get context, make sure you've wrapped your components with the Root component!"
 		);
 	}
 

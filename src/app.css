@@ -322,3 +322,7 @@ div[data-active='true'] {
 .document {
 	width: 65ch;
 }
+
+input {
+	background: inherit;
+}

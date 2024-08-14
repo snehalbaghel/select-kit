@@ -4,6 +4,8 @@
 	import IconSvelte from '../lib/Icons/IconSvelte.svelte';
 	import IconTailwind from '../lib/Icons/IconTailwind.svelte';
 
+	let open = false;
+
 	const guides = [
 		{ title: 'Introduction', path: '/introduction' },
 		{ title: 'Quickstart', path: '/quickstart' },
@@ -58,6 +60,7 @@
 						type="button"
 						class="flex h-6 w-6 mr-2 items-center justify-center rounded-md transition hover:bg-zinc-900/5 dark:hover:bg-white/5"
 						aria-label="Toggle navigation"
+						on:click={() => (open = !open)}
 						><svg
 							viewBox="0 0 10 9"
 							fill="none"
@@ -86,26 +89,6 @@
 							</li>
 						</ul>
 					</nav>
-					<!-- <div class="hidden md:block md:h-5 md:w-px md:bg-zinc-900/10 md:dark:bg-white/15"></div> -->
-					<!-- <div class="flex gap-4"> -->
-					<!-- <div class="contents lg:hidden">
-						<button
-							type="button"
-							class="flex h-6 w-6 items-center justify-center rounded-md transition hover:bg-zinc-900/5 ui-not-focus-visible:outline-none lg:hidden dark:hover:bg-white/5"
-							aria-label="Find something..."
-							><svg
-								viewBox="0 0 20 20"
-								fill="none"
-								aria-hidden="true"
-								class="h-5 w-5 stroke-zinc-900 dark:stroke-white"
-								><path
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									d="M12.01 12a4.25 4.25 0 1 0-6.02-6 4.25 4.25 0 0 0 6.02 6Zm0 0 3.24 3.25"
-								></path></svg
-							></button
-						>
-					</div> -->
 					<button
 						type="button"
 						class="flex h-6 w-6 items-center justify-center rounded-md transition hover:bg-zinc-900/5 dark:hover:bg-white/5"
@@ -141,6 +124,54 @@
 					<!-- </div> -->
 				</div>
 			</div>
+			{#if open}	
+				<div
+					class="transition-all z-50 fixed bottom-0 left-0 top-14 w-full overflow-y-auto bg-white px-4 pb-4 pt-6 shadow-lg shadow-zinc-900/10 ring-1 ring-zinc-900/7.5 duration-500 ease-in-out data-[closed]:-translate-x-full sm:px-6 sm:pb-10 dark:bg-zinc-900 dark:ring-zinc-800"
+				>
+					<!-- Forgive me lord for hacking my way through life -->
+					<!-- svelte-ignore a11y-click-events-have-key-events -->
+					<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
+					<nav on:click={() => setTimeout(() => open = false, 100)}>
+						<ul role="list">
+							<li class="relative mt-6 md:mt-0">
+								<h2 class="text-xs font-semibold text-zinc-900 dark:text-white">Guide</h2>
+								<div class="relative mt-3">
+									<ul role="list" class="border-l border-transparent">
+										{#each guides as guide}
+											<li class="relative">
+												<a
+													class="flex justify-between gap-2 py-1 pr-3 text-sm transition pl-4 text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
+													class:font-bold={$page.url.pathname === guide.path}
+													href={guide.path}><span class="truncate">{guide.title}</span></a
+												>
+											</li>
+										{/each}
+									</ul>
+								</div>
+							</li>
+							<li class="relative mt-6">
+								<h2 class="text-xs font-semibold text-zinc-900 dark:text-white">Examples</h2>
+								<div class="relative mt-3">
+									<ul role="list" class="border-l border-transparent">
+										{#each docs as doc}
+											<li class="relative flex items-center justify-between">
+												<a
+													class="flex justify-between gap-2 py-1 pr-3 text-sm transition pl-4 text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
+													class:font-bold={$page.url.pathname === doc.path}
+													href={doc.path}><span class="truncate">{doc.title}</span></a
+												>
+												{#if doc.tw}
+													<IconTailwind class="h-2" />
+												{/if}
+											</li>
+										{/each}
+									</ul>
+								</div>
+							</li>
+						</ul>
+					</nav>
+				</div>
+			{/if}
 			<nav class="hidden lg:mt-10 lg:block">
 				<ul role="list">
 					<li class="md:hidden">
@@ -188,7 +219,7 @@
 			</nav>
 		</div>
 	</header>
-	<div class="absolute inset-0 -z-10 mx-0 max-w-none overflow-hidden lg:ml-72 xl:ml-80">
+	<div class="absolute inset-0 -z-10 mx-0 max-w-none lg:ml-72 xl:ml-80">
 		<div
 			class="absolute left-1/2 top-0 ml-[-38rem] h-[25rem] w-[81.25rem] dark:[mask-image:linear-gradient(white,transparent)]"
 		>
@@ -198,7 +229,7 @@
 		</div>
 	</div>
 	<div class="relative flex h-full flex-col px-4 my-20 sm:px-6 lg:px-8">
-		<div class="prose dark:prose-invert document">
+		<div class="prose dark:prose-invert lg:min-w-prose">
 			<slot />
 		</div>
 	</div>

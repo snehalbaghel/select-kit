@@ -6,6 +6,12 @@
  * Based on Atom's One Light theme: https://github.com/atom/atom/tree/master/packages/one-light-syntax
  */
 
+ @layer utilities {
+	@variants responsive {
+		.min-w-prose        { min-width: 65ch; }
+	}
+}
+
 :root {
 	--prism-scheme: light;
 
@@ -317,10 +323,6 @@ pre {
 
 div[data-active='true'] {
 	background-color: gray;
-}
-
-.document {
-	width: 65ch;
 }
 
 input {

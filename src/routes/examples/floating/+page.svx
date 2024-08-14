@@ -1,3 +1,5 @@
+## Floating Menu
+
 ```svelte example
 <script lang="ts">
 	import Select from '$lib/index.js';

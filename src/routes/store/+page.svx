@@ -1,0 +1,24 @@
+# Store
+
+Select Kit exposes it's internal store that keeps track of the state of the combobox, like open, selected, active, scores, etc. While directly **updating the store manually may break things** you can use it to read the state without any issues. To import it:
+
+```svelte
+import { getStore } from 'select-kit'
+```
+
+Calling this function within the context of the combobox will give you the following object:
+
+```ts
+export interface Store {
+	query: Writable<string>;
+	active: Writable<string | undefined>;
+	selected: Writable<string | undefined>;
+	listBoxRef: Writable<HTMLDivElement | undefined>;
+	scores: Writable<Record<string, number>>;
+	matchCount: Writable<number | undefined>;
+	shouldFilter: Writable<boolean>;
+	open: Writable<boolean>;
+	label: Writable<string>;
+	selectOnly: Writable<boolean>;
+}
+```

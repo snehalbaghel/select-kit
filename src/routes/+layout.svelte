@@ -7,7 +7,8 @@
 	const guides = [
 		{ title: 'Introduction', path: '/introduction' },
 		{ title: 'Quickstart', path: '/quickstart' },
-		{ title: 'Options', path: '/options' }
+		{ title: 'Options', path: '/options' },
+		{ title: 'Store', path: '/store' }
 	];
 
 	const docs = [
@@ -69,7 +70,7 @@
 					<IconSvelte class="h-6" />
 					<a aria-label="Home" href="/">
 						<span class="text-xl font-extralight text-gray-500"
-							>Select <span class="text-black">Kit</span></span
+							>Select <span class="text-black dark:text-white">Kit</span></span
 						>
 					</a>
 				</div>
@@ -193,7 +194,7 @@
 		>
 			<div
 				class="absolute inset-0 bg-gradient-to-r from-[#fcb69f] to-[#ffecd2] opacity-40 [mask-image:radial-gradient(farthest-side_at_top,white,transparent)] dark:from-[#ff4000]/30 dark:to-[#f96743]/30 dark:opacity-100"
-			/>		
+			/>
 		</div>
 	</div>
 	<div class="relative flex h-full flex-col px-4 my-20 sm:px-6 lg:px-8">

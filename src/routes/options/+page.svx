@@ -2,7 +2,7 @@
 
 **NOTE:** *We use [@smui/common](https://www.npmjs.com/package/@smui/common) to forward events to our components, it works similarly to the the Svelte syntax apart from one important difference: for adding event modifiers the `|` should be replaced by `$` i.e. `on:click|preventDefault` becomes `on:click$preventDefault`. For information on this refer this [issue](https://github.com/sveltejs/svelte/issues/2837).*
 
-## Button
+## *Button*
 
 #### Component Props
 
@@ -14,7 +14,7 @@
 
 *Element Type `<button>`*
 
-## Input
+## *Input*
 
 #### Component Props
 
@@ -23,7 +23,7 @@
 
 *Element Type  `<input>`*
 
-## Item
+## *Item*
 
 #### Component Props
 
@@ -43,7 +43,7 @@
 
 *Element Type `<div>`*
 
-## ListBox
+## *ListBox*
 
 #### Component Props: 
 
@@ -58,7 +58,7 @@
 
 *Element Type `<div>`*
 
-## Root
+## *Root*
 
 #### Component Props: 
 
@@ -73,17 +73,17 @@
 
 *Element Type `<div>`*
 
-## Select
+## *Select*
 
 #### Slot Props:
 -  `selected`: Selected item id
 
 *Element Type `<div>`*
 
-## NoResults 
+## *NoResults*
 
 *Element Type `<div>`*
 
-## Separator
+## *Separator*
 
 *Element Type `<div>`*

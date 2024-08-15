@@ -9,7 +9,7 @@ This library is a one-stop solution for building WAI-ARIA compliant navigation/c
 ## Installation
 
 ```bash
-npm install select-kit
+npm install svelte-select-kit
 ```
 
 ## Basic Structure of a Combobox
@@ -39,7 +39,7 @@ For full examples refer the [examples](/src/examples) folder in this repo
 
 ```svelte
 <script lang="ts">
-	import Select from 'select-kit';
+	import Select from 'svelte-select-kit';
 </script>
 
 <Select.Root label="Numbers">
@@ -62,7 +62,7 @@ ListBox supports shouldFilter prop which will disable filtering, to access the i
 
 ```svelte
 <script lang="ts">
-	import Select from 'select-kit';
+	import Select from 'svelte-select-kit';
 
 	let value = '';
 	// Add your logic here for filtering..

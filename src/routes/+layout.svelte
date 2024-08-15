@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import '../app.css';
-	import IconSvelte from '../lib/Icons/IconSvelte.svelte';
-	import IconTailwind from '../lib/Icons/IconTailwind.svelte';
+	import IconSvelte from '../icons/IconSvelte.svelte';
+	import IconTailwind from '../icons/IconTailwind.svelte';
 
 	let open = false;
 

@@ -1,6 +1,6 @@
 {
-	"name": "select-kit",
-	"version": "0.0.1",
+	"name": "svelte-select-kit",
+	"version": "0.1.0",
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build && npm run package",
@@ -22,9 +22,7 @@
 		}
 	},
 	"files": [
-		"dist",
-		"!dist/**/*.test.*",
-		"!dist/**/*.spec.*"
+		"dist"
 	],
 	"peerDependencies": {
 		"svelte": "^4.0.0"

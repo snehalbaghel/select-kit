@@ -3,7 +3,7 @@
 Install the package
 
 ```bash
-npm install select-kit
+npm install svelte-select-kit
 ```
 
 ## Basic Structure of a Combobox
@@ -21,7 +21,7 @@ npm install select-kit
 
 ```svelte
 <script lang="ts">
-	import Select from 'select-kit';
+	import Select from 'svelte-select-kit';
 </script>
 
 <Select.Root label="Numbers">

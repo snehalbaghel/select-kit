@@ -1,7 +1,10 @@
+---
+title: Select Kit - Introduction 
+---
 <script>
 import Example from '../../examples/ExampleClearable.svelte'
 </script>
-# Introduction
+# (Svelte) Select Kit
 
 Select Kit is a one-stop solution for building **WAI-ARIA compliant comboboxes** (navigation/command/select interfaces) on Svelte. The components provided are **headless** so they can be styled as per your requirement, they are also **composable** in nature so its easy to use. The architecture is inspired by [cmdk](https://cmdk.paco.me), you can read their [arch doc](https://github.com/pacocoursey/cmdk/blob/main/ARCHITECTURE.md) to get some context.
 

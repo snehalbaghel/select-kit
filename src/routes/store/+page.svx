@@ -3,7 +3,7 @@
 Select Kit exposes it's internal store that keeps track of the state of the combobox, like open, selected, active, scores, etc. While directly **updating the store manually may break things** you can use it to read the state without any issues. To import it:
 
 ```svelte
-import { getStore } from 'select-kit'
+import { getStore } from 'svelte-select-kit'
 ```
 
 Calling this function within the context of the combobox will give you the following object:

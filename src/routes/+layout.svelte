@@ -124,14 +124,14 @@
 					<!-- </div> -->
 				</div>
 			</div>
-			{#if open}	
+			{#if open}
 				<div
 					class="transition-all z-50 fixed bottom-0 left-0 top-14 w-full overflow-y-auto bg-white px-4 pb-4 pt-6 shadow-lg shadow-zinc-900/10 ring-1 ring-zinc-900/7.5 duration-500 ease-in-out data-[closed]:-translate-x-full sm:px-6 sm:pb-10 dark:bg-zinc-900 dark:ring-zinc-800"
 				>
 					<!-- Forgive me lord for hacking my way through life -->
 					<!-- svelte-ignore a11y-click-events-have-key-events -->
 					<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
-					<nav on:click={() => setTimeout(() => open = false, 100)}>
+					<nav on:click={() => setTimeout(() => (open = false), 100)}>
 						<ul role="list">
 							<li class="relative mt-6 md:mt-0">
 								<h2 class="text-xs font-semibold text-zinc-900 dark:text-white">Guide</h2>
@@ -219,7 +219,7 @@
 			</nav>
 		</div>
 	</header>
-	<div class="absolute inset-0 -z-10 mx-0 max-w-none lg:ml-72 xl:ml-80">
+	<div class="absolute inset-0 -z-10 mx-0 max-w-none lg:ml-72 xl:ml-80 overflow-hidden">
 		<div
 			class="absolute left-1/2 top-0 ml-[-38rem] h-[25rem] w-[81.25rem] dark:[mask-image:linear-gradient(white,transparent)]"
 		>
@@ -228,9 +228,11 @@
 			/>
 		</div>
 	</div>
-	<div class="relative flex h-full flex-col px-4 my-20 sm:px-6 lg:px-8">
-		<div class="prose dark:prose-invert lg:min-w-prose">
-			<slot />
-		</div>
+	<div class="relative flex h-full flex-col px-4 py-20 sm:px-6 lg:px-8">
+		<main class="flex-auto">
+			<div class="prose dark:prose-invert lg:min-w-prose">
+				<slot />
+			</div>
+		</main>
 	</div>
 </div>

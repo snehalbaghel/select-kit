@@ -2,7 +2,7 @@
 
 ```svelte example
 <script lang="ts">
-	import Select from '$lib/index.js';
+	import Select from 'svelte-select-kit';
 	import { tabSelectItems } from '../items.ts';
 
 	let selectedTabIndex = 0;

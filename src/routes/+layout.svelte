@@ -35,6 +35,10 @@
 	};
 </script>
 
+<svelte:head>
+	<title>Select Kit - {[...docs, ...guides].find(i => $page.url.pathname === i.path)?.title}</title>
+</svelte:head>
+
 <div class="h-full lg:ml-72 xl:ml-80">
 	<header class="contents lg:pointer-events-none lg:fixed lg:inset-0 lg:z-40 lg:flex">
 		<div

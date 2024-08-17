@@ -1,7 +1,5 @@
 <!-- Modified version of: https://github.com/themesberg/flowbite-svelte/blob/main/src/routes/utils/ExampleWrapper.svelte -->
 <script lang="ts">
-	export let divClass = 'w-full mx-auto bg-gradient-to-r bg-white dark:bg-zinc-900 p-6';
-
 	// the source of the example, if you want it
 	export let src: any = undefined;
 

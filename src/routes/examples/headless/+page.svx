@@ -4,7 +4,7 @@ To get highlighting on items select-kit adds `data-active="true"` (for active it
 
 ```svelte example
 <script lang="ts">
-	import Select from 'svelte-select-kit';
+	import Select from '$lib/index.js';
 </script>
 
 

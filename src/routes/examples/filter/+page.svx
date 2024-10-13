@@ -1,0 +1,53 @@
+## With Button 
+
+```svelte example
+<script lang="ts">
+	import Select from '$lib/index.js';
+</script>
+
+<Select.Root label="Numbers">
+	<Select.Input placeholder="Search..." class="input" />
+	<Select.Button let:open class="helo">{open ? '⌃' : '⌄'}</Select.Button>
+	<Select.ListBox let:open filter={(query, value) => {
+        query = query.toLowerCase().trim()
+        value = value.toLowerCase().trim()
+
+        if (value.includes(query)) {
+            return 1
+        }
+
+        if (query === '1' && value === 'one') {
+            return 1
+        }
+
+        if (query === '2' && value === 'two') {
+            return 1
+        }
+
+        if (query === '3' && value === 'three') {
+            return 1
+        }
+
+        if (query === '4' && value === 'four') {
+            return 1
+        }
+
+        return 0
+    }}>
+		{#if open}
+			<Select.NoResults>No results found</Select.NoResults>
+			<Select.Item id="one">One</Select.Item>
+			<Select.Item id="two">
+                Two
+            </Select.Item>
+			<Select.Item id="three">
+                Three
+            </Select.Item>
+			<Select.Item id="four">
+                Four
+            </Select.Item>
+		{/if}
+	</Select.ListBox>
+</Select.Root>
+
+```

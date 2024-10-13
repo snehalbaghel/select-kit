@@ -6,19 +6,23 @@
 	import type { HTMLAttributes } from 'svelte/elements';
 	import { ITEM_ATTR, ITEM_VALUE_ATTR } from '$lib/constants.js';
 	import { getStore } from '$lib/store.js';
+	import { defaultFilter, type FilterFn } from '$lib/utils/defaultFilter.js';
 
 	interface $$Props extends Partial<HTMLAttributes<HTMLDivElement>> {
 		open?: boolean | undefined;
 		shouldFilter?: boolean;
 		label?: string;
 		selectOnly?: boolean;
+		filter?: FilterFn
 	}
 
 	export const label: string | undefined = undefined;
 	export let shouldFilter = true;
 	export let selectOnly = false;
+	export let filter: FilterFn | undefined = undefined;
 	/** Passing this prop will make open a controlled prop! */
 	export let open: boolean | undefined = undefined;
+
 	const {
 		query,
 		active,
@@ -63,13 +67,13 @@
 				// TODO: Use a scoring algorithm?
 				const id = item.getAttribute('id');
 				const value = item.getAttribute(ITEM_VALUE_ATTR);
-				if (!id) {
+				const filterFn = filter || defaultFilter
+				if (!id || ! value) {
 					// Do nothing
-				} else if (value?.toLowerCase().includes($query.toLowerCase())) {
-					newScores[id] = 1;
-					newMatchCount += 1;
 				} else {
-					newScores[id] = 0;
+					const newScore = filterFn($query, value, id)
+					if (newScore > 0) newMatchCount++
+					newScores[id] = newScore
 				}
 			});
 

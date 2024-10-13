@@ -18,6 +18,7 @@
 		{ title: 'Select', path: '/examples/headless-select', tw: false },
 		{ title: 'Async', path: '/examples/async', tw: false },
 		{ title: 'With Button', path: '/examples/button', tw: false },
+		{ title: 'Filter', path: '/examples/filter', tw: false },
 		{ title: 'Clearable', path: '/examples/clearable', tw: true },
 		{ title: 'With Tabs', path: '/examples/with-tabs', tw: true },
 		{ title: 'Dialog', path: '/examples/dialog', tw: true },

@@ -27,6 +27,7 @@ npm install svelte-select-kit
 
 - [ ] Multiselect Support
 - [ ] Type Ahead Support for 'Select Only' combobox
+- [ ] Sort by score
 - [ ] Some API improvements
 
 ## Examples
